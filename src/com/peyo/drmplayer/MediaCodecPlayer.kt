@@ -8,13 +8,13 @@ import android.view.SurfaceHolder
 import java.io.IOException
 import java.util.HashMap
 
-class MediaCodecPlayer : CodecState.MediaTimeProvider {
-    protected var mCodecStates: MutableMap<Int, CodecState>? = null
+open class MediaCodecPlayer : CodecState.MediaTimeProvider {
+    private var mCodecStates: MutableMap<Int, CodecState>? = null
     private val mThread: Thread
     private var mThreadStarted: Boolean = false
     private var mDeltaTimeUs: Long = 0
     private var mState: Int = 0
-    protected val mExtractor: MediaExtractor
+    private val mExtractor: MediaExtractor
     protected lateinit var mSurfaceHolder: SurfaceHolder
 
     init {
@@ -30,6 +30,14 @@ class MediaCodecPlayer : CodecState.MediaTimeProvider {
             }
         })
         mExtractor = MediaExtractor()
+    }
+
+    fun getExtractor() : MediaExtractor {
+        return mExtractor
+    }
+
+    fun getCodecStates() : MutableMap<Int, CodecState>? {
+        return mCodecStates
     }
 
     @Throws(Exception::class)
@@ -65,7 +73,7 @@ class MediaCodecPlayer : CodecState.MediaTimeProvider {
     }
 
     @Throws(IOException::class)
-    protected fun addTrack(trackIndex: Int, format: MediaFormat) {
+    protected open fun addTrack(trackIndex: Int, format: MediaFormat) {
         val codec = MediaCodec.createDecoderByType(format.getString(MediaFormat.KEY_MIME)!!)
         codec.configure(
                 format,
@@ -105,7 +113,7 @@ class MediaCodecPlayer : CodecState.MediaTimeProvider {
         mState = STATE_PAUSED
     }
 
-    fun release() {
+    open fun release() {
         if (mState == STATE_PLAYING) {
             mThreadStarted = false
 

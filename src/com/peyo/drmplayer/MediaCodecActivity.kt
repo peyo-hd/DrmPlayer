@@ -1,6 +1,6 @@
 package com.peyo.drmplayer
 
-class MediaCodecActivity : MediaPlayActivity() {
+open class MediaCodecActivity : MediaPlayActivity() {
 
     protected lateinit var mMediaCodecPlayer: MediaCodecPlayer
 
@@ -19,7 +19,7 @@ class MediaCodecActivity : MediaPlayActivity() {
     }
 
     @Throws(Exception::class)
-    protected fun setDataSource(player: MediaCodecPlayer) {
+    protected open fun setDataSource(player: MediaCodecPlayer) {
         player.setDataSource(mediaUrl)
     }
 
