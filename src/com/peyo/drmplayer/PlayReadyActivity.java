@@ -4,7 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.exoplayer2.drm.HttpMediaDrmCallback;
-import com.google.android.exoplayer2.drm.StreamingDrmSessionManager;
+import com.google.android.exoplayer2.drm.DefaultDrmSessionManager;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.smoothstreaming.DefaultSsChunkSource;
 import com.google.android.exoplayer2.source.smoothstreaming.SsMediaSource;
@@ -19,7 +19,7 @@ public class PlayReadyActivity extends ExoPlayActivity {
         super.onCreate(savedInstanceState);
         try {
             mDataSourceFactory = new DefaultHttpDataSourceFactory("PlayReadyActivity");
-            mDrmSessionManager = StreamingDrmSessionManager.newPlayReadyInstance(
+            mDrmSessionManager = DefaultDrmSessionManager.newPlayReadyInstance(
                     new HttpMediaDrmCallback(null, mDataSourceFactory),
                     null, null, null);
         } catch (Exception e) {

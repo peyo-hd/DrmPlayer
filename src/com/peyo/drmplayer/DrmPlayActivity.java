@@ -4,7 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.exoplayer2.drm.HttpMediaDrmCallback;
-import com.google.android.exoplayer2.drm.StreamingDrmSessionManager;
+import com.google.android.exoplayer2.drm.DefaultDrmSessionManager;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.dash.DashMediaSource;
 import com.google.android.exoplayer2.source.dash.DefaultDashChunkSource;
@@ -20,7 +20,7 @@ public class DrmPlayActivity extends ExoPlayActivity {
         super.onCreate(savedInstanceState);
         try {
             mDataSourceFactory = new DefaultHttpDataSourceFactory("DrmPlayActivity");
-            mDrmSessionManager = StreamingDrmSessionManager.newWidevineInstance(
+            mDrmSessionManager = DefaultDrmSessionManager.newWidevineInstance(
                     new HttpMediaDrmCallback(WIDEVINE_LICENSE, mDataSourceFactory),
                     null, null, null);
         } catch (Exception e) {
