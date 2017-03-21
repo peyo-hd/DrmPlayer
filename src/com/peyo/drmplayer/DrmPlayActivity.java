@@ -1,5 +1,6 @@
 package com.peyo.drmplayer;
 
+import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -18,6 +19,7 @@ public class DrmPlayActivity extends ExoPlayActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mSurfaceHolder.setFormat(PixelFormat.TRANSLUCENT);
         try {
             mDataSourceFactory = new DefaultHttpDataSourceFactory("DrmPlayActivity");
             mDrmSessionManager = DefaultDrmSessionManager.newWidevineInstance(
