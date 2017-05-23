@@ -1,6 +1,7 @@
 package com.peyo.drmplayer;
 
 import android.app.Activity;
+import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
@@ -21,6 +22,7 @@ public class MediaPlayActivity extends Activity implements Callback {
 		mSurfaceView = (SurfaceView) findViewById(R.id.surface);
 		mSurfaceHolder = mSurfaceView.getHolder();
 		mSurfaceHolder.addCallback(this);
+		mSurfaceHolder.setFormat(PixelFormat.TRANSLUCENT);
 	}
 
 	@Override
