@@ -2,7 +2,7 @@ package com.peyo.drmplayer;
 
 import android.net.Uri;
 
-import com.google.android.exoplayer2.DefaultLoadControl;
+import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.drm.DrmSessionManager;
@@ -19,10 +19,9 @@ public class ExoPlayActivity extends MediaPlayActivity {
 
     @Override
     protected void playVideo() {
-        mExoPlayer = ExoPlayerFactory.newSimpleInstance(this,
-                new DefaultTrackSelector(null),
-                new DefaultLoadControl(),
-                mDrmSessionManager);
+        mExoPlayer = ExoPlayerFactory.newSimpleInstance(
+                new DefaultRenderersFactory(this, mDrmSessionManager),
+                new DefaultTrackSelector());
         mExoPlayer.setVideoSurfaceHolder(mSurfaceHolder);
         MediaSource source = setDataSource();
         mExoPlayer.prepare(source);

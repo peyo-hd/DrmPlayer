@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:2.3.3'
     }
 }
 
@@ -14,19 +14,13 @@ repositories {
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
 
     defaultConfig {
         applicationId "com.peyo.drmplayer"
         minSdkVersion 21
-        targetSdkVersion 25
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
+        targetSdkVersion 26
     }
 
     sourceSets {
@@ -39,5 +33,5 @@ android {
 }
 
 dependencies {
-    compile 'com.google.android.exoplayer:exoplayer:r2.4.0'
+    compile 'com.google.android.exoplayer:exoplayer:r2.4.3'
 }
