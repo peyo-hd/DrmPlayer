@@ -1,0 +1,47 @@
+buildscript {
+    ext.kotlin_version = '1.3.50'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+repositories {
+    google()
+    jcenter()
+}
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "com.peyo.drmplayer"
+        minSdkVersion 21
+        targetSdkVersion 29
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            res.srcDirs = ['res']
+        }
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'com.google.android.exoplayer:exoplayer:2.10.4'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
