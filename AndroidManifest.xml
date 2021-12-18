@@ -9,6 +9,7 @@
         android:label="@string/app_name" >
         <activity
             android:name=".MediaPlayActivity"
+            android:exported="true"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:label="@string/app_name" >
