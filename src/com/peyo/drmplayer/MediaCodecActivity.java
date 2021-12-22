@@ -18,7 +18,7 @@ public class MediaCodecActivity extends MediaPlayActivity{
         }
 
 	protected void setDataSource(MediaCodecPlayer player) throws Exception {
-		player.setDataSource("http://commondatastorage.googleapis.com/android-tv/Sample%20videos/Zeitgeist/Zeitgeist%202010_%20Year%20in%20Review.mp4");
+		player.setDataSource("https://commondatastorage.googleapis.com/android-tv/Sample%20videos/Zeitgeist/Zeitgeist%202010_%20Year%20in%20Review.mp4");
 	}
 
     @Override
